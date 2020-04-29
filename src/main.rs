@@ -1,9 +1,9 @@
-mod lib;
+mod competitive;
 use std::collections::HashMap;
 
 fn main() {
     // let mut lcg = rand::LCG::new(1664525, 1013904223, 1 << 47, Some(0)); // Java's Constants
-    let mut lcg = lib::rand::LCG::new(6364136223846793005, 1, 1 << 63, None); // MMIX Donald Knuth
+    let mut lcg = competitive::rand::LCG::new(6364136223846793005, 1, 1 << 63, None); // MMIX Donald Knuth
 
     let mut map: HashMap<u64, u64> = HashMap::new();
 
