@@ -9,8 +9,8 @@ fn main() {
 
     for _ in 1..20000 {
         let generated = lcg.next() % 10;
-        if let Some(x) = map.get(&generated) {
-            map.insert(generated, x + 1);
+        if let Some(x) = map.get_mut(&generated) {
+            *x = *x + 1;
         } else {
             map.insert(generated, 1);
         }
