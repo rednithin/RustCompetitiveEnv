@@ -56,7 +56,6 @@ pub mod rand {
             let tmp = splitmix64.next();
             state[2] = tmp;
             state[3] = tmp >> 32;
-            println!("{:?}", state);
             Self { state }
         }
 
