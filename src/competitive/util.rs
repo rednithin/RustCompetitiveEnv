@@ -16,7 +16,7 @@ impl<R: io::BufRead> Scanner<R> {
     pub fn next<T: str::FromStr>(&mut self) -> T {
         loop {
             if let Some(token) = self.buffer.pop() {
-                return token.parse().ok().expect(" Token Parsing Failure");
+                return token.parse().ok().expect("Token Parsing Failure");
             }
             let mut line = String::new();
             self.reader.read_line(&mut line).expect("Line Read Failure");
