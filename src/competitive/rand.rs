@@ -1,5 +1,4 @@
-use std::ops::{Add, Div, Mul, Rem, Sub};
-use std::time::SystemTime;
+use std::time;
 
 // Linear Congruential Generator [Xn+1 = (A * Xn + B) Mod M]
 pub struct LCG {
@@ -15,7 +14,7 @@ impl LCG {
     pub fn new(a: u64, b: u64, m: u64, seed: Option<u64>) -> Self {
         let x: u64 = match seed {
             Some(x) => x,
-            None => match SystemTime::now().duration_since(SystemTime::UNIX_EPOCH) {
+            None => match time::SystemTime::now().duration_since(time::SystemTime::UNIX_EPOCH) {
                 Ok(n) => n.as_secs(),
                 Err(_) => 0,
             },
@@ -39,7 +38,7 @@ impl XoShiro256SS {
     pub fn new(seed: Option<u64>) -> Self {
         let seed: u64 = match seed {
             Some(x) => x,
-            None => match SystemTime::now().duration_since(SystemTime::UNIX_EPOCH) {
+            None => match time::SystemTime::now().duration_since(time::SystemTime::UNIX_EPOCH) {
                 Ok(n) => n.as_secs(),
                 Err(_) => 0,
             },

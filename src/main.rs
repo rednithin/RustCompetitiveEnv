@@ -14,12 +14,14 @@ use std::collections::{
 };
 
 use std::cmp;
+use std::io;
+use std::str;
+use std::time;
 
 fn main() {
-    // let mut lcg = rand::LCG::new(1664525, 1013904223, 1 << 47, Some(0)); // Java's Constants
-    // let mut lcg = rand::LCG::new(6364136223846793005, 1, 1 << 63, None); // MMIX Donald Knuth
-    // let mut lcg = rand::XoShiro256SS::new(None); // XoShiro256SS
-
+    let mut lcg = rand::LCG::new(1664525, 1013904223, 1 << 47, Some(0)); // Java's Constants
+    let mut lcg = rand::LCG::new(6364136223846793005, 1, 1 << 63, None); // MMIX Donald Knuth
+    let mut lcg = rand::XoShiro256SS::new(None); // XoShiro256SS
     let mut lcg = rand::XoShiro256SS::new(Some(10)); // XoShiro256SS
 
     let mut map: HashMap<u64, u64> = HashMap::new();
@@ -41,4 +43,8 @@ fn main() {
             println!("{}: {}", i, 0);
         }
     }
+
+    let mut scanner = util::Scanner::new(io::BufReader::new(std::io::stdin()));
+    let vec = (0..10).map(|_| scanner.next()).collect::<Vec<u32>>();
+    println!("{:?}", vec);
 }
