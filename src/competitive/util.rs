@@ -36,7 +36,10 @@ mod test {
     #[test]
     fn test_in_memory() {
         let input: &[u8] = b"50\t 8 \n1 2 3";
-        let mut output = Scanner::new(input);
-        let mut expected = vec![50, 8, 1, 2, 3];
+        let mut scanner = Scanner::new(input);
+        let answer = (0..4).map(|_| scanner.next()).collect::<Vec<u32>>();
+        let expected = vec![50, 8, 1, 2];
+        assert!(answer == expected);
+        assert!(3 == scanner.next());
     }
 }
